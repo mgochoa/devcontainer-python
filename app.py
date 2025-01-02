@@ -2,10 +2,11 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See LICENSE in the project root for license information.
 #-----------------------------------------------------------------------------------------
+from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
-from flask import Flask
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route("/")
+@app.get("/")
 def hello():
-    return app.send_static_file("index.html")
+    return FileResponse("static/index.html")
